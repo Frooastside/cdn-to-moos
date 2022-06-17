@@ -1,10 +1,12 @@
 import { type v1 } from "moos-api";
 import fetch, { Response, RequestInit } from "node-fetch";
+import cookie from "cookie";
 
 let csrfToken: string | null = null;
+let csrfCookie: string | null = null;
 
 export async function fetchProfile(): Promise<v1.UserProfile | null> {
-  return _csrfFetch("/profile", undefined, { method: "POST" }).then((response) => response.json());
+  return ((await _csrfFetch("/profile", undefined, { method: "POST" }).then((response) => response.json())) as v1.UserProfile) ?? null;
 }
 
 export async function patchProfile(parameters: v1.operations["patch-profile"]["requestBody"]["content"]["application/json"]): Promise<boolean> {
@@ -32,7 +34,9 @@ export async function testCSRFToken(): Promise<Response> {
 
 async function _csrfFetch(endpoint: keyof v1.paths, body?: object, init?: RequestInit, retry = true): Promise<Response> {
   if (!csrfToken) {
-    csrfToken = (await (await requestCSRFToken()).json())._csrf;
+    const response = await requestCSRFToken();
+    csrfCookie = cookie.parse(response.headers.get("set-cookie") ?? "")._csrf;
+    csrfToken = ((await response.json()) as v1.operations["get-csrf-token"]["responses"]["200"]["content"]["application/json"])._csrf;
   }
   const response = await _fetch(endpoint, body, {
     ...init,
@@ -42,7 +46,9 @@ async function _csrfFetch(endpoint: keyof v1.paths, body?: object, init?: Reques
     }
   });
   if (response.status === 403 && retry) {
-    csrfToken = (await (await requestCSRFToken()).json())._csrf;
+    const response = await requestCSRFToken();
+    csrfCookie = cookie.parse(response.headers.get("set-cookie") ?? "")._csrf;
+    csrfToken = ((await response.json()) as v1.operations["get-csrf-token"]["responses"]["200"]["content"]["application/json"])._csrf;
     return _csrfFetch(endpoint, body, init, false);
   }
   return response;
@@ -55,7 +61,9 @@ async function _fetch(endpoint: keyof v1.paths, body?: object, init?: RequestIni
     ...init,
     headers: {
       "Content-Type": "application/json",
-      cookie: `session=${process.env.SESSION_COOKIE};`,
+      cookie: `${process.env.SESSION_COOKIE ? `${cookie.serialize("session", process.env.SESSION_COOKIE)};` : ""} ${
+        csrfCookie ? `${cookie.serialize("_csrf", csrfCookie)};` : ""
+      }`,
       ...init?.headers
     }
   });

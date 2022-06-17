@@ -22,6 +22,7 @@
   },
   "main": "dist",
   "bin": {},
+  "type": "module",
   "scripts": {
     "start": "node -r source-map-support/register dist/index.js",
     "watch": "nodemon -e ts -L -w src --exec \"pnpm build && pnpm start\"",
@@ -33,27 +34,28 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "cookie": "^0.5.0",
     "dotenv": "^16.0.1",
-    "node-fetch": "v2",
+    "node-fetch": "^3.2.6",
     "source-map-support": "^0.5.21",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
+    "@types/cookie": "^0.5.1",
     "@types/node": "^18.0.0",
-    "@types/node-fetch": "^2.6.2",
     "@types/uuid": "^8.3.4",
     "@typescript-eslint/eslint-plugin": "^5.28.0",
     "@typescript-eslint/parser": "^5.28.0",
-    "eslint": "^8.17.0",
+    "eslint": "^8.18.0",
     "eslint-config-prettier": "^8.5.0",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.2",
-    "moos-api": "^0.3.0",
+    "moos-api": "^0.3.1",
     "nodemon": "^2.0.16",
     "prettier": "2.7.1",
     "rimraf": "^3.0.2",
     "ts-node": "^10.8.1",
-    "typescript": "^4.7.3"
+    "typescript": "^4.7.4"
   },
   "lint-staged": {
     "*.{js,ts}": "eslint --ext ts --cache --fix",

@@ -10,9 +10,7 @@ export type PlaylistPreview = {
 };
 
 export type ThumbnailsJson = {
-  dictionary: {
-    [key: string]: string;
-  };
+  [key: string]: string;
 };
 
 export type PlaylistJson = {
