@@ -1,29 +1,29 @@
 {
-  "name": "@wolkeneis/<<NAME>>",
+  "name": "cdn-to-moos",
   "version": "0.1.0",
   "private": true,
-  "description": "<<NAME>>",
+  "description": "Uploads all CDN files to Moos-Storage",
   "keywords": [],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wolkeneis/<<NAME>>.git"
+    "url": "git+https://github.com/frooastside/cdn-to-moos.git"
   },
   "author": "Frooastside <frooastside@gmail.com>",
   "license": "GPL-3.0-or-later",
   "bugs": {
-    "url": "https://github.com/wolkeneis/<<NAME>>/issues"
+    "url": "https://github.com/frooastside/cdn-to-moos/issues"
   },
-  "homepage": "https://<<NAME>>.wolkeneis.dev/",
+  "homepage": "https://github.com/frooastside/cdn-to-moos",
   "engines": {
     "node": "*",
     "vscode": "^1.22.0",
     "npm": "^8.x.x",
     "pnpm": "7.x.x"
   },
-  "main": "<<MAIN>>",
+  "main": "dist",
   "bin": {},
   "scripts": {
-    "start": "node -r source-map-support/register dist/app.js",
+    "start": "node -r source-map-support/register dist/index.js",
     "watch": "nodemon -e ts -L -w src --exec \"pnpm build && pnpm start\"",
     "lint": "eslint --ext ts .",
     "lint:fix": "pnpm eslint --fix --ext ts .",
@@ -34,11 +34,13 @@
   },
   "dependencies": {
     "dotenv": "^16.0.1",
+    "node-fetch": "v2",
     "source-map-support": "^0.5.21",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@types/node": "^18.0.0",
+    "@types/node-fetch": "^2.6.2",
     "@types/uuid": "^8.3.4",
     "@typescript-eslint/eslint-plugin": "^5.28.0",
     "@typescript-eslint/parser": "^5.28.0",
@@ -46,6 +48,7 @@
     "eslint-config-prettier": "^8.5.0",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.2",
+    "moos-api": "^0.3.0",
     "nodemon": "^2.0.16",
     "prettier": "2.7.1",
     "rimraf": "^3.0.2",
