@@ -39,7 +39,6 @@ async function start() {
       }
       try {
         const playlist: CDNTypes.PlaylistJson = JSON.parse(readFileSync(`${path}/playlists/${playlists.dictionary[playlistPreview.key]}`, "utf8"));
-        //const thumbnailsForPlaylist:  = thumbnails[playlistPreview.key];
         console.log(fetch);
 
         console.log(playlist);
