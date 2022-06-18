@@ -12,7 +12,7 @@ specifiers:
   eslint-config-prettier: ^8.5.0
   husky: ^8.0.1
   lint-staged: ^13.0.2
-  moos-api: ^0.3.1
+  moos-api: ^0.3.2
   node-fetch: ^3.2.6
   nodemon: ^2.0.16
   prettier: 2.7.1
@@ -39,7 +39,7 @@ devDependencies:
   eslint-config-prettier: 8.5.0_eslint@8.18.0
   husky: 8.0.1
   lint-staged: 13.0.2
-  moos-api: 0.3.1
+  moos-api: 0.3.2
   nodemon: 2.0.16
   prettier: 2.7.1
   rimraf: 3.0.2
@@ -1363,8 +1363,8 @@ packages:
     resolution: {integrity: sha512-Jsjnk4bw3YJqYzbdyBiNsPWHPfO++UGG749Cxs6peCu5Xg4nrena6OVxOYxrQTqww0Jmwt+Ref8rggumkTLz9Q==}
     dev: true
 
-  /moos-api/0.3.1:
-    resolution: {integrity: sha512-l9PWEf/A3f6da1Qq4RHRcnJbUjbwFhqBtz4gCiz6UEPcsA09JXYyGUHom5PWTJA5yrUMFMaNsTq5L7obIwUowg==}
+  /moos-api/0.3.2:
+    resolution: {integrity: sha512-owg6vXtM0WkyVhtaxFMjlQBshLRbHLYPxNMjjr+h/H6FlCgEt0rUUkivaktp3/+IDDDSN5NJfsB/NR6NN2Cujg==}
     dev: true
 
   /ms/2.1.2:

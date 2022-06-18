@@ -50,7 +50,7 @@
     "eslint-config-prettier": "^8.5.0",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.2",
-    "moos-api": "^0.3.1",
+    "moos-api": "^0.3.2",
     "nodemon": "^2.0.16",
     "prettier": "2.7.1",
     "rimraf": "^3.0.2",
