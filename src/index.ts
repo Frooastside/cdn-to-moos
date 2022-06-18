@@ -34,11 +34,13 @@ async function start() {
       if (!acceptAll) {
         const handlePlaylist = await question(`Process ${playlistPreview.name}? (y/n/a) `);
         if (handlePlaylist !== "y" && handlePlaylist !== "Y" && handlePlaylist !== "a" && handlePlaylist !== "A") {
-          return;
+          continue;
         } else if (handlePlaylist === "a" || handlePlaylist === "A") {
           acceptAll = true;
         }
       }
+      console.log("Delay");
+      await new Promise((resolve, reject) => setTimeout(resolve, 3000));
       try {
         const playlist: CDNTypes.PlaylistJson = JSON.parse(readFileSync(`${path}/playlists/${playlists.dictionary[playlistPreview.key]}`, "utf8"));
         const collection = await createCollection({
