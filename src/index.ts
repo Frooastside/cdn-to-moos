@@ -56,7 +56,7 @@ async function start() {
         for (const season of playlist.seasons) {
           if (!seasons[season.index]) {
             const newSeason = await createSeason({
-              groupId: collection?.id,
+              groupId: collection.id,
               index: season.index
             });
             if (!newSeason) {
